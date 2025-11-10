@@ -23,6 +23,7 @@ queue_len = 10
 task_arrival_rate = 0.14
 co_num = [1,2,4]
 time_limit = 200
+t = 0.1
 
 module_path = f"res_policy/2_0.05_0.05_4_10_[1, 2, 4]/adsac_policy.pth"
 res_path = None

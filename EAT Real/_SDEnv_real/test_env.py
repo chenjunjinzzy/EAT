@@ -10,7 +10,7 @@ def test_env(env, agent, episode_num = 10, render = True,res_path = "random.csv"
     while True:
         seed+=1
         # 重置环境，开始新一轮
-        observation = env.reset(seed)
+        observation, info = env.reset(seed)
         if render:
             print(f"Episode {episode_count + 1}: Reset")
             print(f"{observation}")

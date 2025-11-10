@@ -58,9 +58,9 @@ class Diffusion(nn.Module):
         self.register_buffer('posterior_log_variance_clipped',
                              torch.log(torch.clamp(posterior_variance, min=1e-20)))
         self.register_buffer('posterior_mean_coef1',
-                             betas * np.sqrt(alphas_cumprod_prev) / (1. - alphas_cumprod))
+                             betas * torch.sqrt(alphas_cumprod_prev) / (1. - alphas_cumprod))
         self.register_buffer('posterior_mean_coef2',
-                             (1. - alphas_cumprod_prev) * np.sqrt(alphas) / (1. - alphas_cumprod))
+                             (1. - alphas_cumprod_prev) * torch.sqrt(alphas) / (1. - alphas_cumprod))
 
         self.loss_fn = Losses[loss_type]()
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -212,9 +212,9 @@ class PostDiffusion(nn.Module):
         self.register_buffer('posterior_log_variance_clipped',
                              torch.log(torch.clamp(posterior_variance, min=1e-20)))
         self.register_buffer('posterior_mean_coef1',
-                             betas * np.sqrt(alphas_cumprod_prev) / (1. - alphas_cumprod))
+                             betas * torch.sqrt(alphas_cumprod_prev) / (1. - alphas_cumprod))
         self.register_buffer('posterior_mean_coef2',
-                             (1. - alphas_cumprod_prev) * np.sqrt(alphas) / (1. - alphas_cumprod))
+                             (1. - alphas_cumprod_prev) * torch.sqrt(alphas) / (1. - alphas_cumprod))
 
         self.loss_fn = Losses[loss_type]()
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')

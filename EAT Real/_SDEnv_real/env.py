@@ -98,8 +98,7 @@ class AIGCEnv(gym.Env):
         self.arrived_task_cnt = 0
 
 
-    def reset(self, SEED = 233):
-
+    def reset(self, SEED=233):
         self.set_seed(seed=SEED)
         self.task_generator.reset()
 
@@ -110,19 +109,18 @@ class AIGCEnv(gym.Env):
         task.node_ids = node_ids
         self.cluster.clear_model(task)
         self.cluster.reset()
-        
+
         self.task_queue = TaskQueue(
-            self.task_generator, 
-            visible_len=self.task_queue.visible_len, 
+            self.task_generator,
+            visible_len=self.task_queue.visible_len,
             init_job_num=self.task_queue.visible_len,
             state_dim=self.state_dim)
-        
+
         self.current_time = 1
         self.current_step = 0
-        # self.tt_quality = 0
-        # self.tt_time = 0
 
-        return self.get_obs()
+        obs = self.get_obs()
+        return obs, {}
 
     def add_pre_statistic(self, task: Task):
         steps = task.steps

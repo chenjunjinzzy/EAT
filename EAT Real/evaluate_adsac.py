@@ -32,7 +32,7 @@ wtt = 1
 wt = 10
 diffusion_steps = 10
 
-module_path = f"upload_policy/2_0.05_0.09_4_10_[1, 2, 4]/adsac_policy_f.pth"
+module_path = f"upload_policy/2_0.05_0.09_4_10_[1, 2, 4]/adsac_policy.pth"
 res_path = f"statistic/liner_{task_num}_{T}_{max_task_arrival_rate}_{min_task_arrival_rate}_{diffusion_steps}_{wq}_{wtt}_{wt}_{node_num}_{queue_len}_{co_num}_{seed}/adsac_res_.csv"
 data_path = f"statistic/liner_{task_num}_{T}_{max_task_arrival_rate}_{min_task_arrival_rate}_{diffusion_steps}_{wq}_{wtt}_{wt}_{node_num}_{queue_len}_{co_num}_{seed}/adsac_data_.csv"
 

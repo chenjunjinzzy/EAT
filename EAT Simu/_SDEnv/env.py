@@ -81,22 +81,22 @@ class AIGCEnv(gym.Env):
         self.observation_space = spaces.Box(low=-1, high=np.inf, shape=(queue_len*Task.vector_len + node_num*Node.vector_len,), dtype=np.float32)
         self.statistics = []
 
-    def reset(self, SEED = 233):
-
+    def reset(self, SEED=233):
         self.set_seed(seed=SEED)
         self.task_generator.reset()
         self.cluster.reset()
-        
+
         self.task_queue = TaskQueue(
-            self.task_generator, 
-            visible_len=self.task_queue.visible_len, 
+            self.task_generator,
+            visible_len=self.task_queue.visible_len,
             init_job_num=self.task_queue.visible_len,
             state_dim=self.state_dim)
-        
+
         self.current_time = 1
         self.current_step = 0
-    
-        return self.get_obs()
+
+        obs = self.get_obs()
+        return obs, {}
 
     def add_statistic(self, task: Task):
         steps = task.steps
